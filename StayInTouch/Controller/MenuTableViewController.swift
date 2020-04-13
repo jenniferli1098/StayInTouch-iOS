@@ -8,23 +8,31 @@
 
 import UIKit
 import CoreData
+import ChameleonFramework
 
 class MenuTableViewController: UITableViewController {
 
     
-     var itemArray = [Person]()
+    var itemArray = [Person]()
        
-       
-       
-       let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
-       
-       override func viewDidLoad() {
-           super.viewDidLoad()
-           loadItems()
-           print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
 
+    let dateFormatterPrint = DateFormatter()
+       
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+       
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        loadItems()
+
+        dateFormatterPrint.dateFormat = "MMM dd,yyyy"
+        //customize style of table view
+        tableView.rowHeight = 80.0
+        tableView.separatorStyle = .none
+        
+        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+        
            
-       }
+    }
 
     // MARK: - Table view data source
 
@@ -41,9 +49,21 @@ class MenuTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "friendReuseCell", for: indexPath)
+        let row = indexPath.row
+        let person = itemArray[row]
         
-        let person = itemArray[indexPath.row]
+        
         cell.textLabel?.text = "\(person.firstName!) \(person.lastName!)"
+        cell.detailTextLabel?.text = dateFormatterPrint.string(from: person.lastMet!)
+        
+        
+        //cell.backgroundColor = UIColor(hexString: person.uiColor!)
+        if let bgColor = FlatMint().darken(byPercentage: CGFloat(0.5 * Float(row)/Float(itemArray.count))){
+
+            cell.backgroundColor = bgColor
+            cell.textLabel?.textColor = ContrastColorOf(bgColor, returnFlat: true)
+            cell.detailTextLabel?.textColor = ContrastColorOf(bgColor, returnFlat: true)
+        }
         
         return cell
     }
@@ -84,15 +104,23 @@ class MenuTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "menuToDetails",
+            let destinationVC = segue.destination as? PersonDetailsViewController,
+            let rowIndex = tableView.indexPathForSelectedRow?.row
+        {
+            let person = itemArray[rowIndex]
+            destinationVC.person = person
+        }
+        
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
     }
-    */
+    
     
     
      //MARK: - TableView Delegate Methods
@@ -125,6 +153,9 @@ class MenuTableViewController: UITableViewController {
                 newPerson.lastName = lnameTextfield.text!
                 newPerson.waitTime = 30
                 newPerson.lastMet = Date()
+                newPerson.uiColor = UIColor.randomFlat().hexValue()
+                newPerson.secondsUntilNextMeeting = Double(Double(newPerson.waitTime) * 86400.0)
+                self.itemArray.append(newPerson)
                 /* update thing
                 newItem.title = textField.text!
                 newItem.done = false

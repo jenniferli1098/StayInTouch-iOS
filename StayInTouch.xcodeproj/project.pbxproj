@@ -3,10 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C5A276BD90905AFD915BE1DC /* Pods_StayInTouch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CCB564758311AA08498F2FB1 /* Pods_StayInTouch.framework */; };
 		D4440BFF2443DDD0004B101E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440BFE2443DDD0004B101E /* AppDelegate.swift */; };
 		D4440C012443DDD0004B101E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440C002443DDD0004B101E /* SceneDelegate.swift */; };
 		D4440C062443DDD0004B101E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4440C042443DDD0004B101E /* Main.storyboard */; };
@@ -14,9 +15,13 @@
 		D4440C0B2443DDD3004B101E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4440C0A2443DDD3004B101E /* Assets.xcassets */; };
 		D4440C0E2443DDD3004B101E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4440C0C2443DDD3004B101E /* LaunchScreen.storyboard */; };
 		D4440C162443DE20004B101E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440C152443DE20004B101E /* MenuTableViewController.swift */; };
+		D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B02444CD3F00652B45 /* PersonReader.swift */; };
+		D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1A45C260043481ACB28F4ED4 /* Pods-StayInTouch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayInTouch.release.xcconfig"; path = "Target Support Files/Pods-StayInTouch/Pods-StayInTouch.release.xcconfig"; sourceTree = "<group>"; };
+		CCB564758311AA08498F2FB1 /* Pods_StayInTouch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StayInTouch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4440BFB2443DDD0004B101E /* StayInTouch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = StayInTouch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4440BFE2443DDD0004B101E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4440C002443DDD0004B101E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -26,6 +31,9 @@
 		D4440C0D2443DDD3004B101E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4440C0F2443DDD3004B101E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4440C152443DE20004B101E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		D4E4A8B02444CD3F00652B45 /* PersonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonReader.swift; sourceTree = "<group>"; };
+		D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
+		E1E21AF2C3676A4BEE98EC64 /* Pods-StayInTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayInTouch.debug.xcconfig"; path = "Target Support Files/Pods-StayInTouch/Pods-StayInTouch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +41,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C5A276BD90905AFD915BE1DC /* Pods_StayInTouch.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1BC44C8EB84E4155CC5DE952 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				E1E21AF2C3676A4BEE98EC64 /* Pods-StayInTouch.debug.xcconfig */,
+				1A45C260043481ACB28F4ED4 /* Pods-StayInTouch.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		2002C28CE4FB5D4B951851E4 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CCB564758311AA08498F2FB1 /* Pods_StayInTouch.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D4440BF22443DDCF004B101E = {
 			isa = PBXGroup;
 			children = (
 				D4440BFD2443DDD0004B101E /* StayInTouch */,
 				D4440BFC2443DDD0004B101E /* Products */,
+				1BC44C8EB84E4155CC5DE952 /* Pods */,
+				2002C28CE4FB5D4B951851E4 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,6 +86,7 @@
 		D4440BFD2443DDD0004B101E /* StayInTouch */ = {
 			isa = PBXGroup;
 			children = (
+				D4E4A8B22444CD4C00652B45 /* Model */,
 				D4440C182443DE32004B101E /* View */,
 				D4440C172443DE27004B101E /* Controller */,
 				D4440BFE2443DDD0004B101E /* AppDelegate.swift */,
@@ -74,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				D4440C152443DE20004B101E /* MenuTableViewController.swift */,
+				D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -94,6 +124,14 @@
 			path = "Data Model";
 			sourceTree = "<group>";
 		};
+		D4E4A8B22444CD4C00652B45 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D4E4A8B02444CD3F00652B45 /* PersonReader.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,9 +139,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D4440C122443DDD3004B101E /* Build configuration list for PBXNativeTarget "StayInTouch" */;
 			buildPhases = (
+				9444B88F19FB07CD4627A84D /* [CP] Check Pods Manifest.lock */,
 				D4440BF72443DDD0004B101E /* Sources */,
 				D4440BF82443DDD0004B101E /* Frameworks */,
 				D4440BF92443DDD0004B101E /* Resources */,
+				3F1A7463C18318FB54465D1C /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -160,6 +200,48 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3F1A7463C18318FB54465D1C /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StayInTouch/Pods-StayInTouch-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-StayInTouch/Pods-StayInTouch-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-StayInTouch/Pods-StayInTouch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		9444B88F19FB07CD4627A84D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-StayInTouch-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		D4440BF72443DDD0004B101E /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -167,7 +249,9 @@
 			files = (
 				D4440C162443DE20004B101E /* MenuTableViewController.swift in Sources */,
 				D4440BFF2443DDD0004B101E /* AppDelegate.swift in Sources */,
+				D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */,
 				D4440C012443DDD0004B101E /* SceneDelegate.swift in Sources */,
+				D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */,
 				D4440C092443DDD0004B101E /* StayInTouch.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -310,6 +394,7 @@
 		};
 		D4440C132443DDD3004B101E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E1E21AF2C3676A4BEE98EC64 /* Pods-StayInTouch.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -327,6 +412,7 @@
 		};
 		D4440C142443DDD3004B101E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1A45C260043481ACB28F4ED4 /* Pods-StayInTouch.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

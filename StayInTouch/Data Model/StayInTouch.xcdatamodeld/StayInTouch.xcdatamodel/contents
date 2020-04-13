@@ -4,9 +4,11 @@
         <attribute name="firstName" attributeType="String"/>
         <attribute name="lastMet" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastName" attributeType="String"/>
+        <attribute name="secondsUntilNextMeeting" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="uiColor" attributeType="String"/>
         <attribute name="waitTime" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
-        <element name="Person" positionX="-63" positionY="-18" width="128" height="103"/>
+        <element name="Person" positionX="-63" positionY="-18" width="128" height="133"/>
     </elements>
 </model>
