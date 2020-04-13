@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="friendReuseCell" textLabel="ZVU-zY-YBI" detailTextLabel="NKP-Mz-HJm" style="IBUITableViewCellStyleSubtitle" id="Dnc-xS-M8a" customClass="SwipeTableViewCell" customModule="StayInTouch" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="friendReuseCell" textLabel="ZVU-zY-YBI" detailTextLabel="NKP-Mz-HJm" style="IBUITableViewCellStyleSubtitle" id="Dnc-xS-M8a">
                                 <rect key="frame" x="0.0" y="28" width="414" height="55.666667938232422"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dnc-xS-M8a" id="dkg-8O-CiX">
@@ -41,7 +41,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="7ag-Iy-jhX" kind="presentation" id="jMw-n1-Zgf"/>
+                                    <segue destination="7ag-Iy-jhX" kind="presentation" identifier="menuToDetails" id="jMw-n1-Zgf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

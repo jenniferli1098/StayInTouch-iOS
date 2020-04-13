@@ -46,7 +46,9 @@ class PersonDetailsViewController: UIViewController {
     
     //MARK: Just Met Pressed
     @IBAction func justMetPressed(_ sender: UIButton) {
-        person.lastMet = Date()
+        person.lastMet = Date().addingTimeInterval(100000.0)
+        print(person.lastMet!)
+        saveItems()
         loadValues()
     }
     
@@ -58,6 +60,7 @@ class PersonDetailsViewController: UIViewController {
     
     //MARK: Done Pressed
     @IBAction func donePressed(_ sender: UIButton) {
+        
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -70,9 +73,9 @@ class PersonDetailsViewController: UIViewController {
         
     }
     
+
     //MARK: Model Manupulation Methods
     func saveItems() {
-        
         do {
           try context.save()
         } catch {
@@ -80,4 +83,6 @@ class PersonDetailsViewController: UIViewController {
         }
         
     }
+    
+    
 }

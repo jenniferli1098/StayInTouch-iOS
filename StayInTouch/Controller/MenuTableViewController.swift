@@ -131,7 +131,8 @@ class MenuTableViewController: UITableViewController {
 
             saveItems()
             
-            tableView.deselectRow(at: indexPath, animated: true)
+            //tableView.deselectRow(at: indexPath, animated: true)
+            self.performSegue(withIdentifier: "menuToDetails", sender: self)
             
         }
         
