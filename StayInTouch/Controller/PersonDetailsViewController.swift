@@ -43,14 +43,6 @@ class PersonDetailsViewController: UIViewController {
     }
     */
     
-    //MARK: Just Met Pressed
-    @IBAction func justMetPressed(_ sender: UIButton) {
-        person.lastMet = person.lastMet!.addingTimeInterval(100000.0)
-        print(person.lastMet!)
-        saveItems()
-        loadValues()
-    }
-    
     
     //MARK: Edit Profile
     @IBAction func editPressed(_ sender: UIButton) {

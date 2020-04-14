@@ -33,7 +33,11 @@ class MenuTableViewController: UITableViewController {
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
-           
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("Appeared")
     }
 
     // MARK: - Table view data source
@@ -103,14 +107,15 @@ class MenuTableViewController: UITableViewController {
             
         }
         delete.backgroundColor = UIColor.flatRed()
-        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, nil) in
-            print("Edited friend")
+        let view = UIContextualAction(style: .normal, title: "View") { (action, view, nil) in
+            print("View friend")
             self.performSegue(withIdentifier: "menuToDetails", sender: self)
             
         }
         //edit.backgroundColor = UIColor.flatLime()
-        let config = UISwipeActionsConfiguration(actions: [delete, edit])
+        let config = UISwipeActionsConfiguration(actions: [delete, view])
         config.performsFirstActionWithFullSwipe = false
+        
         return config
     }
     /*
@@ -187,7 +192,7 @@ class MenuTableViewController: UITableViewController {
         }
         
         //MARK: - Add New Items
-        
+        /*
         @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
             
             var fnameTextfield = UITextField()
@@ -227,7 +232,7 @@ class MenuTableViewController: UITableViewController {
             present(alert, animated: true, completion: nil)
             
         }
-    
+    */
     //MARK: Model Manupulation Methods
     
     func saveItems() {
