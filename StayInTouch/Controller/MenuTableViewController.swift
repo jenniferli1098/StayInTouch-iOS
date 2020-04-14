@@ -14,6 +14,8 @@ class MenuTableViewController: UITableViewController {
 
     
     var itemArray = [Person]()
+    
+    var rowSelected = 0
        
 
     let dateFormatterPrint = DateFormatter()
@@ -69,6 +71,48 @@ class MenuTableViewController: UITableViewController {
     }
     
 
+    //MARK: Adding swipe actions
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        rowSelected = indexPath.row
+        
+        let meet = UIContextualAction(style: .normal, title: "Just Met") { (action, view, nil) in
+            print("Met up with friend")
+            let person = self.itemArray[indexPath.row]
+            person.lastMet = Date()
+            self.updateItemArray()
+        }
+        meet.backgroundColor = UIColor.flatLime()
+        
+        let config = UISwipeActionsConfiguration(actions: [meet])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
+    
+    override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        rowSelected = indexPath.row
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { (action, view, nil) in
+            print("Deleted friend")
+            let row = indexPath.row
+            self.context.delete(self.itemArray[row])
+            self.itemArray.remove(at: row)
+            self.tableView.deleteRows(at: [indexPath], with: .fade)
+            self.saveItems()
+            
+        }
+        delete.backgroundColor = UIColor.flatRed()
+        let edit = UIContextualAction(style: .normal, title: "Edit") { (action, view, nil) in
+            print("Edited friend")
+            self.performSegue(withIdentifier: "menuToDetails", sender: self)
+            
+        }
+        //edit.backgroundColor = UIColor.flatLime()
+        let config = UISwipeActionsConfiguration(actions: [delete, edit])
+        config.performsFirstActionWithFullSwipe = false
+        return config
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -78,16 +122,19 @@ class MenuTableViewController: UITableViewController {
     */
 
     /*
+    
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            itemArray.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+    
+ */
 
     /*
     // Override to support rearranging the table view.
@@ -110,11 +157,13 @@ class MenuTableViewController: UITableViewController {
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "menuToDetails",
-            let destinationVC = segue.destination as? PersonDetailsViewController,
-            let rowIndex = tableView.indexPathForSelectedRow?.row
+            let destinationVC = segue.destination as? PersonDetailsViewController
         {
+            let rowIndex = tableView.indexPathForSelectedRow?.row ?? rowSelected
             let person = itemArray[rowIndex]
             destinationVC.person = person
+        
+            
         }
         
         // Get the new view controller using segue.destination.
@@ -129,10 +178,11 @@ class MenuTableViewController: UITableViewController {
             
             //create a segue
 
-            saveItems()
+            //saveItems()
             
-            //tableView.deselectRow(at: indexPath, animated: true)
+            
             self.performSegue(withIdentifier: "menuToDetails", sender: self)
+            tableView.deselectRow(at: indexPath, animated: true)
             
         }
         
@@ -149,22 +199,17 @@ class MenuTableViewController: UITableViewController {
                 //what will happen once the user clicks the Add Item button on our UIAlert
                 
                 
+                //Create new person
                 let newPerson = Person(context: self.context)
                 newPerson.firstName = fnameTextfield.text!
                 newPerson.lastName = lnameTextfield.text!
                 newPerson.waitTime = 30
                 newPerson.lastMet = Date()
-                newPerson.uiColor = UIColor.randomFlat().hexValue()
                 newPerson.secondsUntilNextMeeting = Double(Double(newPerson.waitTime) * 86400.0)
                 self.itemArray.append(newPerson)
-                /* update thing
-                newItem.title = textField.text!
-                newItem.done = false
-                newItem.parentCategory = self.selectedCategory
-                self.itemArray.append(newItem)
-                */
                 
-                self.saveItems()
+                
+                self.updateItemArray()
             }
             
             alert.addTextField { (alertTextField) in
@@ -210,14 +255,35 @@ class MenuTableViewController: UITableViewController {
         */
         
         let request: NSFetchRequest<Person> = Person.fetchRequest()
+        
+        let sort = NSSortDescriptor(key: "secondsUntilNextMeeting", ascending: true)
+        request.sortDescriptors = [sort]
         do {
             itemArray = try context.fetch(request)
         } catch {
             print("Error fetching data from context \(error)")
         }
         
+        updateItemArray()
+        
         tableView.reloadData()
         
+    }
+    
+    //MARK: Item Array Manipulation
+    
+    
+    func updateItemArray () {
+        
+        for k in itemArray {
+            let nextMeeting = k.lastMet!.addingTimeInterval(Double(k.waitTime))
+            let secondsToWait = nextMeeting.timeIntervalSinceNow
+            k.waitTime = Int16(secondsToWait / 86400.0)
+        }
+        
+        itemArray.sort(by: { $0.waitTime < $1.waitTime })
+        
+        saveItems()
     }
 
 }

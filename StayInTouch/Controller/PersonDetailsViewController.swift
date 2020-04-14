@@ -12,7 +12,6 @@ class PersonDetailsViewController: UIViewController {
 
     
     var person: Person!
-    
     let dateFormatterPrint = DateFormatter()
     
     @IBOutlet weak var fnameLabel: UILabel!
@@ -46,7 +45,7 @@ class PersonDetailsViewController: UIViewController {
     
     //MARK: Just Met Pressed
     @IBAction func justMetPressed(_ sender: UIButton) {
-        person.lastMet = Date().addingTimeInterval(100000.0)
+        person.lastMet = person.lastMet!.addingTimeInterval(100000.0)
         print(person.lastMet!)
         saveItems()
         loadValues()
