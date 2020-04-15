@@ -4,7 +4,7 @@
         <attribute name="firstName" attributeType="String"/>
         <attribute name="lastMet" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="lastName" attributeType="String"/>
-        <attribute name="secondsUntilNextMeeting" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="secondsUntilNextMeeting" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="waitTime" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>

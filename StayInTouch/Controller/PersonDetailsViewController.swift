@@ -28,39 +28,57 @@ class PersonDetailsViewController: UIViewController {
         
         dateFormatterPrint.dateFormat = "MMM dd,yyyy"
 
-        loadValues()
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        
+        loadValues(with: person)
+    }
+    
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destination.
         // Pass the selected object to the new view controller.
+        if segue.identifier == "detailsToEdit",
+            let destinationVC = segue.destination as? EditPersonViewController
+        {
+            destinationVC.person = person
+            destinationVC.identity = "Edit"
+            destinationVC.callback = { updatedPerson in
+                print(updatedPerson)
+                self.person = updatedPerson
+                //self.loadValues(with: updatedPerson)
+            }
+        }
     }
-    */
+    
     
     
     //MARK: Edit Profile
-    @IBAction func editPressed(_ sender: UIButton) {
+    @IBAction func editPressed(_ sender: UIBarButtonItem) {
+        performSegue(withIdentifier: "detailsToEdit", sender: self)
         
-    }
-    
-    //MARK: Done Pressed
-    @IBAction func donePressed(_ sender: UIButton) {
-        
-        self.dismiss(animated: true, completion: nil)
     }
     
     //MARK: Load values
-    func loadValues(){
+    func loadValues(with person: Person){
         
         fnameLabel.text = person.firstName!
         lnameLabel.text = person.lastName!
         lastMeetingLabel.text = dateFormatterPrint.string(from: person.lastMet!)
+        
+        //person!.waitTime = 30
+
+        let nextMeeting = person.lastMet!.addingTimeInterval(Double(person.waitTime) * 86400.0)
+        let daysToWait = Int16(nextMeeting.timeIntervalSinceNow / 86400.0)
+        daysUntilMeetupLabel.text = String(daysToWait)
+        
+        waitingTimeLabel.text = String(person.waitTime)
         
     }
     

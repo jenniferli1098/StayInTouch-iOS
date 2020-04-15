@@ -61,6 +61,7 @@ class MenuTableViewController: UITableViewController {
         
         
         cell.textLabel?.text = "\(person.firstName!) \(person.lastName!)"
+        
         cell.detailTextLabel?.text = dateFormatterPrint.string(from: person.lastMet!)
         
         
@@ -188,13 +189,7 @@ class MenuTableViewController: UITableViewController {
      //MARK: - TableView Delegate Methods
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            
-            //create a segue
-
-            //saveItems()
-            
-            
-            self.performSegue(withIdentifier: "menuToDetails", sender: self)
+            //self.performSegue(withIdentifier: "menuToDetails", sender: self)
             tableView.deselectRow(at: indexPath, animated: true)
             
         }
@@ -289,12 +284,13 @@ class MenuTableViewController: UITableViewController {
     func updateItemArray () {
         
         for k in itemArray {
-            let nextMeeting = k.lastMet!.addingTimeInterval(Double(k.waitTime))
+            //next meeting is last met + wait time
+            let nextMeeting = k.lastMet!.addingTimeInterval(Double(k.waitTime) * 86400.0)
             let secondsToWait = nextMeeting.timeIntervalSinceNow
-            k.waitTime = Int16(secondsToWait / 86400.0)
+            k.secondsUntilNextMeeting = secondsToWait
         }
-        
-        itemArray.sort(by: { $0.waitTime < $1.waitTime })
+        //we are marking by when they will meet next
+        itemArray.sort(by: { $0.secondsUntilNextMeeting < $1.secondsUntilNextMeeting })
         
         saveItems()
     }
