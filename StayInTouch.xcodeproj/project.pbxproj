@@ -17,6 +17,7 @@
 		D4440C162443DE20004B101E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440C152443DE20004B101E /* MenuTableViewController.swift */; };
 		D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B02444CD3F00652B45 /* PersonReader.swift */; };
 		D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */; };
+		D4E4A8BA2446888E00652B45 /* EditPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B92446888E00652B45 /* EditPersonViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		D4440C152443DE20004B101E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
 		D4E4A8B02444CD3F00652B45 /* PersonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonReader.swift; sourceTree = "<group>"; };
 		D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
+		D4E4A8B92446888E00652B45 /* EditPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonViewController.swift; sourceTree = "<group>"; };
 		E1E21AF2C3676A4BEE98EC64 /* Pods-StayInTouch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StayInTouch.debug.xcconfig"; path = "Target Support Files/Pods-StayInTouch/Pods-StayInTouch.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -104,6 +106,7 @@
 			children = (
 				D4440C152443DE20004B101E /* MenuTableViewController.swift */,
 				D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */,
+				D4E4A8B92446888E00652B45 /* EditPersonViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -251,6 +254,7 @@
 				D4440BFF2443DDD0004B101E /* AppDelegate.swift in Sources */,
 				D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */,
 				D4440C012443DDD0004B101E /* SceneDelegate.swift in Sources */,
+				D4E4A8BA2446888E00652B45 /* EditPersonViewController.swift in Sources */,
 				D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */,
 				D4440C092443DDD0004B101E /* StayInTouch.xcdatamodeld in Sources */,
 			);

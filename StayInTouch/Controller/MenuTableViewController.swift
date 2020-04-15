@@ -38,6 +38,7 @@ class MenuTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         print("Appeared")
+        loadItems()
     }
 
     // MARK: - Table view data source
@@ -167,8 +168,15 @@ class MenuTableViewController: UITableViewController {
             let rowIndex = tableView.indexPathForSelectedRow?.row ?? rowSelected
             let person = itemArray[rowIndex]
             destinationVC.person = person
-        
+                // do something with the result
             
+        }
+        else if segue.identifier == "menuToCreate",
+            let destinationVC = segue.destination as? EditPersonViewController
+        {
+            destinationVC.callback = { result in
+                 print(result)
+            }
         }
         
         // Get the new view controller using segue.destination.
