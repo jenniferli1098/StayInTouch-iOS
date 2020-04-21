@@ -62,7 +62,11 @@ class MenuTableViewController: UITableViewController {
         
         cell.textLabel?.text = "\(person.firstName!) \(person.lastName!)"
         
-        cell.detailTextLabel?.text = dateFormatterPrint.string(from: person.lastMet!)
+        let nextMeeting = person.lastMet!.addingTimeInterval(Double(person.waitTime) * 86400.0)
+        let daysToWait = Int16(nextMeeting.timeIntervalSinceNow / 86400.0)
+        cell.detailTextLabel?.text = "\(daysToWait) Days until meetup"
+        
+        //cell.detailTextLabel?.text = dateFormatterPrint.string(from: person.lastMet!)
         
         
         //cell.backgroundColor = UIColor(hexString: person.uiColor!)
