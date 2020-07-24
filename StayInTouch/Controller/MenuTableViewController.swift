@@ -76,7 +76,7 @@ class MenuTableViewController: UITableViewController {
         
         
         //cell.backgroundColor = UIColor(hexString: person.uiColor!)
-        if let bgColor = FlatMint().darken(byPercentage: CGFloat(0.5 * Float(row)/Float(itemArray.count))){
+        if let bgColor = FlatGreen().darken(byPercentage: CGFloat(0.5 * Float(row)/Float(itemArray.count))){
 
             cell.backgroundColor = bgColor
             cell.textLabel?.textColor = ContrastColorOf(bgColor, returnFlat: true)
