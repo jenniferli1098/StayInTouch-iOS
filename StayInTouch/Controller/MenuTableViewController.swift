@@ -162,7 +162,7 @@ class MenuTableViewController: UITableViewController {
      //MARK: - TableView Delegate Methods
         
         override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            //self.performSegue(withIdentifier: "menuToDetails", sender: self)
+            self.performSegue(withIdentifier: "menuToDetails", sender: self)
             tableView.deselectRow(at: indexPath, animated: true)
             
         }

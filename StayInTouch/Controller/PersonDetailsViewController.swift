@@ -59,6 +59,10 @@ class PersonDetailsViewController: UIViewController {
     }
     
     
+    @IBAction func justMet(_ sender: UIButton) {
+        person.lastMet = Date()
+        loadValues(with: person)
+    }
     
     //MARK: Edit Profile
     @IBAction func editPressed(_ sender: UIBarButtonItem) {

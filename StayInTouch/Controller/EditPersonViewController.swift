@@ -5,6 +5,8 @@
 //  Created by Jennifer Liang on 2020-04-14.
 //  Copyright © 2020 Jennifer Liang. All rights reserved.
 //
+//Dismissing viewers
+//https://stackoverflow.com/questions/42961444/swift-3-how-to-dismiss-uiviewcontroller-after-uialertcontroller-action/42961660
 
 import UIKit
 import CoreData
@@ -93,16 +95,20 @@ class EditPersonViewController: UIViewController {
     
     func addPerson(){
         //Create new person
-        let newPerson = Person(context: context)
-        newPerson.firstName = fnameTextField.text!
-        newPerson.lastName = lnameTextField.text!
-        newPerson.waitTime = Int16(timeStepper.value)
-        newPerson.lastMet = datePicker.date
-        newPerson.secondsUntilNextMeeting = 0.0 // it might not be necessary since it is reloaded every time in the tableview Double(Double(newPerson.waitTime) * 86400.0)
-        if let imageData = self.profilePic.image?.pngData() {
-            print("imageData")
-            newPerson.profilePic = imageData
-        }
+//        let newPerson = Person(context: context)
+//        newPerson.firstName = fnameTextField.text!
+//        newPerson.lastName = lnameTextField.text!
+//        newPerson.waitTime = Int16(timeStepper.value)
+//        newPerson.lastMet = datePicker.date
+//        newPerson.secondsUntilNextMeeting = 0.0 // it might not be necessary since it is reloaded every time in the tableview Double(Double(newPerson.waitTime) * 86400.0)
+//        if let imageData = self.profilePic.image?.pngData() {
+//            print("imageData")
+//            newPerson.profilePic = imageData
+//        }
+        person = Person(context: context)
+        person?.lastMet = datePicker.date
+        //        newPerson.secondsUntilNextMeeting = 0.0 // it might not be necessary since it is reloaded every time in the tableview Double(Double(newPerson.waitTime) * 86400.0)
+        editPerson()
         
     }
     
@@ -111,7 +117,10 @@ class EditPersonViewController: UIViewController {
         person!.lastName = lnameTextField.text!
         person!.waitTime = Int16(timeStepper.value)
         person!.lastMet = datePicker.date
-        
+        if let imageData = self.profilePic.image?.pngData() {
+            print("imageData")
+            person?.profilePic = imageData
+        }
     }
     @IBAction func donePressed(_ sender: Any) {
         if identity == "Create" {
@@ -122,19 +131,28 @@ class EditPersonViewController: UIViewController {
         }
         do {
             var alert : UIAlertController?
-            if(fnameTextField.text! == "" || lnameTextField.text! == "") {
+            if(fnameTextField.text! == "") {
                 alert = UIAlertController(title: "Error", message: "Please enter their name", preferredStyle: .alert)
-                return
+                
+                alert!.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+                
             } else {
                 try context.save()
                 alert = UIAlertController(title: "Success", message: "Profile successfully saved!", preferredStyle: .alert)
+                alert!.addAction(UIAlertAction(title: "Done", style: .default, handler: { action in
+                    self.dismissToRoot()
+                }))
             }
-            
-            alert!.addAction(UIAlertAction(title: "Done", style: .default, handler: nil))
+
             self.present(alert!, animated: true)
+            
         } catch {
             print("error saving in edit person")
         }
+    }
+    func dismissToRoot(){
+        self.navigationController?.popToRootViewController(animated: true)
+
     }
 }
 
