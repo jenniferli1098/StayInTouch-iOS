@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="93" id="KGk-i7-Jjw" customClass="FriendTableViewCell" customModule="StayInTouch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="320" height="93"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2T2-et-IRu">
+                        <rect key="frame" x="10" y="5" width="80" height="80"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="80" id="7W5-6q-apn"/>
+                            <constraint firstAttribute="width" secondItem="2T2-et-IRu" secondAttribute="height" multiplier="1:1" id="teS-IH-oMA"/>
+                        </constraints>
+                    </imageView>
+                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" distribution="fillProportionally" alignment="top" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="xoD-0l-hJH">
+                        <rect key="frame" x="100" y="15" width="210" height="45"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cwk-0b-ccQ">
+                                <rect key="frame" x="0.0" y="0.0" width="38" height="24"/>
+                                <accessibility key="accessibilityConfiguration" identifier="textLabel"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle3"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JpP-zl-wTh">
+                                <rect key="frame" x="0.0" y="29" width="47" height="16"/>
+                                <accessibility key="accessibilityConfiguration" identifier="detailTextLabel"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleFootnote"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="2T2-et-IRu" firstAttribute="width" secondItem="2T2-et-IRu" secondAttribute="height" multiplier="1:1" id="88u-Vg-erH"/>
+                    <constraint firstItem="xoD-0l-hJH" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="8FS-o7-E9l"/>
+                    <constraint firstItem="2T2-et-IRu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="Cux-4m-hVj"/>
+                    <constraint firstAttribute="bottom" secondItem="2T2-et-IRu" secondAttribute="bottom" constant="5" id="Fi8-Dc-n2m"/>
+                    <constraint firstItem="xoD-0l-hJH" firstAttribute="leading" secondItem="2T2-et-IRu" secondAttribute="trailing" constant="10" id="GYg-tT-bFt"/>
+                    <constraint firstAttribute="trailing" secondItem="xoD-0l-hJH" secondAttribute="trailing" constant="10" id="RyC-wC-ylf"/>
+                    <constraint firstItem="2T2-et-IRu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="o7D-vY-TNJ"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
+            <connections>
+                <outlet property="detailsLabel" destination="JpP-zl-wTh" id="22H-fi-8Nb"/>
+                <outlet property="nameLabel" destination="cwk-0b-ccQ" id="gLJ-pR-PGR"/>
+                <outlet property="profilePic" destination="2T2-et-IRu" id="upN-nA-ES8"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="116.18303571428571"/>
+        </tableViewCell>
+    </objects>
+</document>

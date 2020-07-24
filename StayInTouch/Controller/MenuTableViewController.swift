@@ -10,6 +10,8 @@ import UIKit
 import CoreData
 import ChameleonFramework
 
+
+
 class MenuTableViewController: UITableViewController {
 
     
@@ -30,7 +32,8 @@ class MenuTableViewController: UITableViewController {
         //customize style of table view
         tableView.rowHeight = 80.0
         tableView.separatorStyle = .none
-        
+        tableView.register(UINib(nibName: "FriendTableViewCell", bundle: nil), forCellReuseIdentifier: "friendReuseCell")
+
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
         
     }
@@ -55,17 +58,20 @@ class MenuTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "friendReuseCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "friendReuseCell", for: indexPath) as! FriendTableViewCell
         let row = indexPath.row
         let person = itemArray[row]
         
         
-        cell.textLabel?.text = "\(person.firstName!) \(person.lastName!)"
+        cell.nameLabel?.text = "\(person.firstName!) \(person.lastName!)"
         
         let nextMeeting = person.lastMet!.addingTimeInterval(Double(person.waitTime) * 86400.0)
         let daysToWait = Int16(nextMeeting.timeIntervalSinceNow / 86400.0)
-        cell.detailTextLabel?.text = "\(daysToWait) Days until meetup"
+        cell.detailsLabel?.text = "\(daysToWait) Days until meetup"
         
+        if let img = person.profilePic  {
+            cell.profilePic?.image = UIImage(data: img)
+        }
         //cell.detailTextLabel?.text = dateFormatterPrint.string(from: person.lastMet!)
         
         
@@ -124,43 +130,6 @@ class MenuTableViewController: UITableViewController {
         
         return config
     }
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            itemArray.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    
- */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     
     // MARK: - Navigation
@@ -198,48 +167,7 @@ class MenuTableViewController: UITableViewController {
             
         }
         
-        //MARK: - Add New Items
-        /*
-        @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
-            
-            var fnameTextfield = UITextField()
-            var lnameTextfield = UITextField()
-            
-            let alert = UIAlertController(title: "Add New Todoey Item", message: "", preferredStyle: .alert)
-            
-            let action = UIAlertAction(title: "Add Item", style: .default) { (action) in
-                //what will happen once the user clicks the Add Item button on our UIAlert
-                
-                
-                //Create new person
-                let newPerson = Person(context: self.context)
-                newPerson.firstName = fnameTextfield.text!
-                newPerson.lastName = lnameTextfield.text!
-                newPerson.waitTime = 30
-                newPerson.lastMet = Date()
-                newPerson.secondsUntilNextMeeting = Double(Double(newPerson.waitTime) * 86400.0)
-                self.itemArray.append(newPerson)
-                
-                
-                self.updateItemArray()
-            }
-            
-            alert.addTextField { (alertTextField) in
-                alertTextField.placeholder = "First name"
-                fnameTextfield = alertTextField
-            }
-            alert.addTextField { (alertTextField) in
-                alertTextField.placeholder = "Last name"
-                lnameTextfield = alertTextField
-            }
-            
-            
-            alert.addAction(action)
-            
-            present(alert, animated: true, completion: nil)
-            
-        }
-    */
+    
     //MARK: Model Manupulation Methods
     
     func saveItems() {
@@ -255,16 +183,7 @@ class MenuTableViewController: UITableViewController {
     
     
     func loadItems() {
-        /*
-        let categoryPredicate = NSPredicate(format: "parentCategory.name MATCHES %@", selectedCategory!.name!)
-        
-        if let addtionalPredicate = predicate {
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate, addtionalPredicate])
-        } else {
-            request.predicate = categoryPredicate
-        }
-
-        */
+       
         
         let request: NSFetchRequest<Person> = Person.fetchRequest()
         
@@ -300,3 +219,4 @@ class MenuTableViewController: UITableViewController {
     }
 
 }
+

@@ -20,6 +20,7 @@ class PersonDetailsViewController: UIViewController {
     @IBOutlet weak var daysUntilMeetupLabel: UILabel!
     @IBOutlet weak var waitingTimeLabel: UILabel!
     
+    @IBOutlet weak var profilePic: UIImageView!
     
     
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
@@ -67,12 +68,10 @@ class PersonDetailsViewController: UIViewController {
     
     //MARK: Load values
     func loadValues(with person: Person){
-        
         fnameLabel.text = person.firstName!
         lnameLabel.text = person.lastName!
         lastMeetingLabel.text = dateFormatterPrint.string(from: person.lastMet!)
         
-        //person!.waitTime = 30
 
         let nextMeeting = person.lastMet!.addingTimeInterval(Double(person.waitTime) * 86400.0)
         let daysToWait = Int16(nextMeeting.timeIntervalSinceNow / 86400.0)
@@ -80,6 +79,9 @@ class PersonDetailsViewController: UIViewController {
         
         waitingTimeLabel.text = String(person.waitTime)
         
+        if let img = person.profilePic  {
+            self.profilePic.image = UIImage(data: img)
+        }
     }
     
 

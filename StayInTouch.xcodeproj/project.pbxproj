@@ -15,6 +15,9 @@
 		D4440C0B2443DDD3004B101E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D4440C0A2443DDD3004B101E /* Assets.xcassets */; };
 		D4440C0E2443DDD3004B101E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4440C0C2443DDD3004B101E /* LaunchScreen.storyboard */; };
 		D4440C162443DE20004B101E /* MenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4440C152443DE20004B101E /* MenuTableViewController.swift */; };
+		D4D4DC4324CA72D9001CD608 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4DC4224CA72D9001CD608 /* ImagePicker.swift */; };
+		D4D4DC4924CA8D02001CD608 /* FriendTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4D4DC4724CA8D02001CD608 /* FriendTableViewCell.swift */; };
+		D4D4DC4A24CA8D02001CD608 /* FriendTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = D4D4DC4824CA8D02001CD608 /* FriendTableViewCell.xib */; };
 		D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B02444CD3F00652B45 /* PersonReader.swift */; };
 		D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */; };
 		D4E4A8BA2446888E00652B45 /* EditPersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4E4A8B92446888E00652B45 /* EditPersonViewController.swift */; };
@@ -32,6 +35,9 @@
 		D4440C0D2443DDD3004B101E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D4440C0F2443DDD3004B101E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4440C152443DE20004B101E /* MenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuTableViewController.swift; sourceTree = "<group>"; };
+		D4D4DC4224CA72D9001CD608 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		D4D4DC4724CA8D02001CD608 /* FriendTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendTableViewCell.swift; sourceTree = "<group>"; };
+		D4D4DC4824CA8D02001CD608 /* FriendTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FriendTableViewCell.xib; sourceTree = "<group>"; };
 		D4E4A8B02444CD3F00652B45 /* PersonReader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonReader.swift; sourceTree = "<group>"; };
 		D4E4A8B32444F0EE00652B45 /* PersonDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewController.swift; sourceTree = "<group>"; };
 		D4E4A8B92446888E00652B45 /* EditPersonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditPersonViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +94,7 @@
 		D4440BFD2443DDD0004B101E /* StayInTouch */ = {
 			isa = PBXGroup;
 			children = (
+				D4D4DC4424CA871E001CD608 /* CustomClasses */,
 				D4E4A8B22444CD4C00652B45 /* Model */,
 				D4440C182443DE32004B101E /* View */,
 				D4440C172443DE27004B101E /* Controller */,
@@ -125,6 +132,16 @@
 				D4440C072443DDD0004B101E /* StayInTouch.xcdatamodeld */,
 			);
 			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		D4D4DC4424CA871E001CD608 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				D4D4DC4224CA72D9001CD608 /* ImagePicker.swift */,
+				D4D4DC4724CA8D02001CD608 /* FriendTableViewCell.swift */,
+				D4D4DC4824CA8D02001CD608 /* FriendTableViewCell.xib */,
+			);
+			path = CustomClasses;
 			sourceTree = "<group>";
 		};
 		D4E4A8B22444CD4C00652B45 /* Model */ = {
@@ -198,6 +215,7 @@
 				D4440C0E2443DDD3004B101E /* LaunchScreen.storyboard in Resources */,
 				D4440C0B2443DDD3004B101E /* Assets.xcassets in Resources */,
 				D4440C062443DDD0004B101E /* Main.storyboard in Resources */,
+				D4D4DC4A24CA8D02001CD608 /* FriendTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,11 +268,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4D4DC4924CA8D02001CD608 /* FriendTableViewCell.swift in Sources */,
 				D4440C162443DE20004B101E /* MenuTableViewController.swift in Sources */,
 				D4440BFF2443DDD0004B101E /* AppDelegate.swift in Sources */,
 				D4E4A8B42444F0EE00652B45 /* PersonDetailsViewController.swift in Sources */,
 				D4440C012443DDD0004B101E /* SceneDelegate.swift in Sources */,
 				D4E4A8BA2446888E00652B45 /* EditPersonViewController.swift in Sources */,
+				D4D4DC4324CA72D9001CD608 /* ImagePicker.swift in Sources */,
 				D4E4A8B12444CD3F00652B45 /* PersonReader.swift in Sources */,
 				D4440C092443DDD0004B101E /* StayInTouch.xcdatamodeld in Sources */,
 			);
@@ -402,6 +422,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FN883H4BWG;
 				INFOPLIST_FILE = StayInTouch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -420,6 +441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FN883H4BWG;
 				INFOPLIST_FILE = StayInTouch/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
